@@ -6,7 +6,7 @@ Made with my mentor at [Bloc](http://bloc.io).
 
 ## The app is msoler-bloccit
 
-Access it via [msoler-bloccit](https://dashboard.heroku.com/apps/msoler-bloccit/)
+Access it via [msoler-bloccit](https://msoler-bloccit.herokuapp.com/)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
