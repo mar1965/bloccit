@@ -57,3 +57,5 @@ group :development, :test do
   gem 'spring'
 end
 
+# Include boostrap SASS gem
+gem 'bootstrap-sass'
