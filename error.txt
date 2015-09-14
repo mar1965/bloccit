@@ -1,0 +1,67 @@
+........FFFF
+
+Failures:
+
+  1) AdvertisementsController POST create increases the number of Advertisement by 1
+     Failure/Error: expect{advertisement :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_numbers}}.to change(Advertisement,:count).by(1)
+     NoMethodError:
+       undefined method `advertisement' for #<RSpec::ExampleGroups::AdvertisementsController::POSTCreate:0x007f872f538cd0>
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/testing/assertions/routing.rb:171:in `method_missing'
+     # ./spec/controllers/advertisements_controller_spec.rb:50:in `block (4 levels) in <top (required)>'
+     # ./spec/controllers/advertisements_controller_spec.rb:50:in `block (3 levels) in <top (required)>'
+
+  2) AdvertisementsController POST create assigns the new advertisement to @advertisement
+     Failure/Error: advertisement :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_numbers}
+     NoMethodError:
+       undefined method `advertisement' for #<RSpec::ExampleGroups::AdvertisementsController::POSTCreate:0x007f872f4b0308>
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/testing/assertions/routing.rb:171:in `method_missing'
+     # ./spec/controllers/advertisements_controller_spec.rb:54:in `block (3 levels) in <top (required)>'
+
+  3) AdvertisementsController POST create redirects to the new advertisement
+     Failure/Error: advertisement :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_numbers}
+     NoMethodError:
+       undefined method `advertisement' for #<RSpec::ExampleGroups::AdvertisementsController::POSTCreate:0x007f872f451da8>
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/testing/assertions/routing.rb:171:in `method_missing'
+     # ./spec/controllers/advertisements_controller_spec.rb:59:in `block (3 levels) in <top (required)>'
+
+  4) AdvertisementsController GET #create returns http success
+     Failure/Error: get :create
+     NoMethodError:
+       undefined method `[]' for nil:NilClass
+     # ./app/controllers/advertisements_controller.rb:16:in `create'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/abstract_controller/base.rb:198:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/rendering.rb:10:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:115:in `call'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:115:in `call'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:503:in `call'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:503:in `call'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/callbacks.rb:88:in `run_callbacks'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/abstract_controller/callbacks.rb:19:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/rescue.rb:29:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/notifications.rb:164:in `block in instrument'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activesupport-4.2.3/lib/active_support/notifications.rb:164:in `instrument'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/activerecord-4.2.3/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/abstract_controller/base.rb:137:in `process'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionview-4.2.3/lib/action_view/rendering.rb:30:in `process'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/test_case.rb:632:in `process'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/test_case.rb:65:in `process'
+     # /Users/msoler/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_controller/test_case.rb:508:in `get'
+     # ./spec/controllers/advertisements_controller_spec.rb:66:in `block (3 levels) in <top (required)>'
+
+Finished in 0.11177 seconds (files took 1.8 seconds to load)
+12 examples, 4 failures
+
+Failed examples:
+
+rspec ./spec/controllers/advertisements_controller_spec.rb:49 # AdvertisementsController POST create increases the number of Advertisement by 1
+rspec ./spec/controllers/advertisements_controller_spec.rb:53 # AdvertisementsController POST create assigns the new advertisement to @advertisement
+rspec ./spec/controllers/advertisements_controller_spec.rb:58 # AdvertisementsController POST create redirects to the new advertisement
+rspec ./spec/controllers/advertisements_controller_spec.rb:65 # AdvertisementsController GET #create returns http success
+
