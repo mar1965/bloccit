@@ -5,7 +5,7 @@ include RandomData
   Advertisement.create!(
     title: RandomData.random_sentence,
     copy:  RandomData.random_paragraph,
-    price: 100.25
+    price: RandomData.random_numbers
   )
 end
 advertisements = Advertisement.all

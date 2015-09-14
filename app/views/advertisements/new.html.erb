@@ -4,7 +4,8 @@
      <p>Guidelines for ads</p>
      <ul>
        <li>Enter your advertisement's title and copy.</li>
-       <li>Profanity is absolutely prohibited.</li>
+       <li>Set your price, per the Bloc Words policy.</li>
+       <li>You pay only when someone clicks on your ad.</li>
      </ul>
    </div>
    <div class="col-md-8">
@@ -18,7 +19,10 @@
          <%= f.text_area :copy, rows: 8, class: 'form-control', placeholder: "Enter ad copy" %>
        </div>
        <div class="form-group">
-
+         <%= f.label :price %>
+         <%= f.text_field :price, class: 'form-control', placeholder: "Set your budget." %>
+       </div>
+       <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
        </div>
      <% end %>
