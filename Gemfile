@@ -60,3 +60,6 @@ end
 
 # Include boostrap SASS gem
 gem 'bootstrap-sass'
+
+# Used for encrypting User passwords
+gem 'bcrypt', '~> 3.1.7'
