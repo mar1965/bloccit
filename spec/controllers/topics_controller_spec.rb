@@ -17,19 +17,22 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "GET show" do
-    it "returns http success" do
-      get :show, {id: my_topic.id}
-      expect(response).to have_http_status(:success)
-    end
+    describe "GET /:id" do
+      before do
+        get :show, id: my_topic.id
+      end
 
-    it "renders the #show view" do
-      get :show, {id: my_topic.id}
-      expect(response).to render_template :show
-    end
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
 
-    it "assigns my_topic to @topic" do
-      get :show, {id: my_topic.id}
-      expect(assigns(:topic)).to eq(my_topic)
+      it "renders the #show view" do
+        expect(response).to render_template :show
+      end
+
+      it "assigns my_topic to @topic" do
+        expect(assigns(:topic)).to eq(my_topic)
+      end
     end
   end
 
