@@ -11,8 +11,7 @@ class SponsoredPostsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @sponsored_post = SponsoredPost.new(sponsored_post_params)
-    @sponsored_post.topic = @topic
+    @sponsored_post = @topic.sponsored_posts.build(sponsored_post_params)
 
     if @sponsored_post.save
       flash[:notice] = "Sponsored post was saved successfully."
