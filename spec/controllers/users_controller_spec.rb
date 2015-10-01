@@ -51,6 +51,10 @@ RSpec.describe UsersController, :type => :controller do
       it "sets user password_confirmation properly" do
         expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
       end
+
+      it "logs the user in after sign up" do
+        expect(session[:user_id]).to eq assigns(:user).user_id
+      end
     end
   end
 
