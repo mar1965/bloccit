@@ -288,4 +288,49 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
   end
+
+  context "moderator user" do
+    before do
+      user = User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld", role: :moderator)
+      create_session(user)
+    end
+
+    describe "GET index" do
+      before do
+        get :index
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "assigns Topic.all to topic" do
+        expect(assigns(:topics)).to eq([my_topic])
+      end
+    end
+
+    describe "GET edit" do
+      it "returns http redirect" do
+        get :edit, {id: my_topic.id}
+        expect(response).to redirect_to(topics_path)
+      end
+    end
+
+    describe "PUT update" do
+      it "returns http redirect" do
+        new_name = RandomData.random_sentence
+        new_description = RandomData.random_paragraph
+
+        put :update, id: my_topic.id, topic: {name: new_name, description: new_description}
+        expect(response).to redirect_to(topics_path)
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "returns http redirect" do
+        delete :destroy, {id: my_topic.id}
+        expect(response).to redirect_to(new_session_path)
+      end
+    end
+  end
 end
