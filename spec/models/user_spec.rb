@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+
   # Shoulda tests for name
-  it { should have_many(:posts)}
+  it { is_expected.to have_many(:posts)}
+  it { is_expected.to have_many(:comments)}
   it { should validate_presence_of(:name) }
   it { should validate_length_of(:name).is_at_least(1) }
 
@@ -20,23 +22,23 @@ RSpec.describe User, type: :model do
   it { should validate_length_of(:password).is_at_least(6) }
 
   describe "attributes" do
-    it "should respond to name" do
+    it "responds to name" do
       expect(user).to respond_to(:name)
     end
 
-    it "should respond to email" do
+    it "responds to email" do
       expect(user).to respond_to(:email)
     end
 
-    it "should respond to role" do
+    it "responds to role" do
       expect(user).to respond_to(:role)
     end
 
-    it "should respond to admin?" do
+    it "responds to admin?" do
       expect(user).to respond_to(:admin?)
     end
 
-    it "should respond to member?" do
+    it "responds to member?" do
       expect(user).to respond_to(:member?)
     end
 
@@ -44,16 +46,16 @@ RSpec.describe User, type: :model do
 
   describe "roles" do
 
-    it "should be member by default" do
-      expect(user.role).to eql("member")
+    it "is member by default" do
+      expect(user.role).to eq("member")
     end
 
     context "member user" do
-      it "should return true for #member?" do
+      it "returns true for #member?" do
         expect(user.member?).to be_truthy
       end
 
-      it "should return false for #admin?" do
+      it "returns false for #admin?" do
         expect(user.admin?).to be_falsey
       end
     end
@@ -63,11 +65,11 @@ RSpec.describe User, type: :model do
         user.admin!
       end
 
-      it "should return false for #member?" do
+      it "returns false for #member?" do
         expect(user.member?).to be_falsey
       end
 
-      it "should return true for #admin?" do
+      it "returns true for #admin?" do
         expect(user.admin?).to be_truthy
       end
     end
