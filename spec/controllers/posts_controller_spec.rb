@@ -7,6 +7,7 @@ RSpec.describe PostsController, type: :controller do
   let(:other_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "helloworld", role: :member) }
   let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
   let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: my_user) }
+  let(:vote) { Vote.create!(value: 1, post: post, user: user) }
 
   context "guest" do
     describe "GET show" do
@@ -111,7 +112,7 @@ RSpec.describe PostsController, type: :controller do
       it "increases the number of Post by 1" do
         expect{ post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph} }.to change(Post,:count).by(1)
       end
-      
+
       before do
         post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
       end

@@ -95,5 +95,19 @@ RSpec.describe VotesController, type: :controller do
         expect(response).to redirect_to(my_topic)
       end
     end
+
+    describe "POST create_vote" do
+      it "increases the sum of post votes by one" do
+        points = user_post.points
+        post :up_vote, post_id: user_post.id
+        expect(user_post.points).to eq(1)
+      end
+
+      it ":back redirects to posts topic show" do
+        request.env["HTTP_REFERER"] = topic_path(my_topic)
+        post :up_vote, post_id: user_post.id
+        expect(response).to redirect_to(my_topic)
+      end
+    end
   end
 end

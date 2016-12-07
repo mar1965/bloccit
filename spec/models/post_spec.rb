@@ -75,4 +75,26 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe "#create_vote" do
+    let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
+    let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
+    let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
+
+    it "triggers create_vote on save" do
+      post.save
+      expect(post.up_votes).to eq(1)
+    end
+
+    it "does not down_vote on save" do
+      post.save
+      expect(post.down_votes).to eq(0)
+    end
+
+    it "attributes the vote to the current user" do
+      post.save
+      expect(Vote.first.user).to eq(post.user)
+    end
+
+  end
 end
