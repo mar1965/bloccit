@@ -76,4 +76,14 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe "after_create" do
+
+    before do
+      it "favorites the post" do
+        favorite = user.favorites.create(post: post)
+      end
+
+    end
+  end
 end
