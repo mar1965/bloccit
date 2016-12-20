@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+  #let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+  let(:user) { create(:user) }
 
   # Shoulda tests for name
   it { is_expected.to have_many(:posts)}
@@ -24,8 +25,8 @@ RSpec.describe User, type: :model do
   it { should validate_length_of(:password).is_at_least(6) }
 
   describe "attributes" do
-    it "responds to name" do
-      expect(user).to respond_to(:name)
+    it "should have name and email attributes" do
+      expect(user).to have_attributes(name: user.name, email: user.email)
     end
 
     it "responds to email" do
@@ -78,8 +79,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "invalid user" do
-    let(:user_with_invalid_name) { User.new(name: "", email: "user@bloccit.com") }
-    let(:user_with_invalid_email) { User.new(name: "Bloccit User", email: "") }
+    let(:user_with_invalid_name) { build(:user, name: "") }
+    let(:user_with_invalid_email) { build(:user, email: "") }
     let(:user_with_invalid_email_format) { User.new(name: "Bloccit User", email: "user_with_invalid_email_format") }
 
     it "should be an invalid user due to blank name" do
@@ -108,6 +109,15 @@ RSpec.describe User, type: :model do
     it "returns the appropriate favorite if it exists" do
       favorite = user.favorites.where(post: @post).create
       expect(user.favorite_for(@post)).to eq(favorite)
+    end
+  end
+
+  describe ".avatar_url" do
+    let(:known_user) { create(:user, email: "blochead@bloc.io") }
+
+    it "returns the proper Gravatar url for a known email entity" do
+      expected_gravatar = "http://gravatar.com/avatar/bb6d1172212c180cfbdb7039129d7b03.png?s=48"
+      expect(known_user.avatar_url(48)).to eq(expected_gravatar)
     end
   end
 end
