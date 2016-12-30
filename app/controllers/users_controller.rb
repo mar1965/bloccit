@@ -24,4 +24,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.visible_to(current_user)
   end
+
+  def has_no_submissions?(user)
+    if @posts = 0
+      true
+    end
+    if @comments = 0
+      true
+    end
+  end
+
+  def no_submissions_message(user)
+    "{user.name} has not submitted any yet."
+  end
+
 end
