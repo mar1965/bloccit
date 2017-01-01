@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   #let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
   let(:user) { create(:user) }
+  let(:favorite) { Vote.create!(post: post, user: user) }
 
   # Shoulda tests for name
   it { is_expected.to have_many(:posts)}
@@ -94,6 +95,30 @@ RSpec.describe User, type: :model do
     it "should be an invalid user due to incorrectly formatted email address" do
       expect(user_with_invalid_email_format).to_not be_valid
     end
+  end
+
+  describe "logged in user" do
+    let(:user_with_valid_name) { build(:user, name: "Bloccit User") }
+    let(:user_with_valid_email) { build(:user, email: "user@bloccit.com") }
+    let(:user_with_valid_email_format) { User.new(name: "Bloccit User", email: "valid@email.format", password: "password") }
+
+    it "should be a valid user with a name" do
+      expect(user_with_valid_name).to be_valid
+    end
+
+    it "should be a valid user with an email address" do
+      expect(user_with_valid_email).to be_valid
+    end
+
+    it "should be a valid user with a properly formatted email address" do
+      expect(user_with_valid_email_format).to be_valid
+    end
+
+    it "returns the proper Gravatar url for logged in user that is a known email entity" do
+      expected_gravatar = "http://gravatar.com/avatar/744343da0b1785ae3c06618a92405e6a.png?s=48"
+      expect(user_with_valid_email.avatar_url(48)).to eq(expected_gravatar)
+    end
+
   end
 
   describe "#favorite_for(post)" do
