@@ -18,7 +18,7 @@ RSpec.describe Api::V1::TopicsController, type: :controller do
 
     it "GET show returns child posts" do
       get :show, id: my_topic.id
-      response_has = JSON.parse response.body
+      response_hash = JSON.parse response.body
       expect(response_hash['posts']).to_not be_nil
     end
   end
@@ -40,7 +40,7 @@ RSpec.describe Api::V1::TopicsController, type: :controller do
 
     it "GET show returns child posts" do
       get :show, id: my_topic.id
-      response_has = JSON.parse response.body
+      response_hash = JSON.parse response.body
       expect(response_hash['posts']).to_not be_nil
     end
   end
