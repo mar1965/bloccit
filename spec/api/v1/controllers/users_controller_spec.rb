@@ -134,7 +134,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     describe "POST create" do
       context "with valid attributes" do
         before do
-          @new_user = build(:User)
+          @new_user = build(:user)
           post :create, user: { name: @new_user.name, email: @new_user.email, password: @new_user.password, role: "admin" }
         end
 
